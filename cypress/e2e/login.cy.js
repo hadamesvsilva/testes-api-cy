@@ -1,13 +1,13 @@
 /// <reference types="cypress" />
 
-describe('Login', () => {
+describe('Login API servrest', () => {
 
     it('Deve fazer login com sucesso', () => {
         cy.request({
             method: 'POST',
             url: 'login',
             body: {
-                "email": "fulano@qa.com",
+                "email": "fulanomoreira@qa.com",
                 "password": "teste" 
             }
         }).then((response) => {
