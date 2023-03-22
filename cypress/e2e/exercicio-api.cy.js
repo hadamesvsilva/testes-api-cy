@@ -47,7 +47,15 @@ describe('Testes da Funcionalidade Usuários', () => {
           })
      });
 
-     it('Deve validar um usuário com email inválido', () => {
+     it.only('Deve validar um usuário com email inválido', () => {
+          cy.cadastrarUsuarios('novo usuario 62121564', 'novouser.com.br', "pOe8S040JWJOKar", "true")
+               .then((response) => {
+                    expect(response.body.email).to.equal("email deve ser um email válido")
+                    expect(response.status).to.equal(400)
+               })
+     });
+
+     it.only('Deve validar um usuário com email repetido', () => {
           cy.cadastrarUsuarios('novo usuario 62121564', 'Granville62@gmail.com', "pOe8S040JWJOKar", "true")
                .then((response) => {
                     expect(response.status).to.equal(400)
